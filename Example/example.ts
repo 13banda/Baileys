@@ -55,7 +55,7 @@ async function example() {
             Object.values(chat.presences).forEach(presence => console.log( `${presence.name}'s presence is ${presence.lastKnownPresence} in ${chat.jid}`))
         }
         // only do something when a new message is received
-        if (!chat.hasNewMessage) return 
+        if (!(chatUpdate.messages && chatUpdate.count)) return 
         
         const m = chat.messages.all()[0] // pull the new message from the update
         const messageStubType = WA_MESSAGE_STUB_TYPES[m.messageStubType] ||  'MESSAGE'
